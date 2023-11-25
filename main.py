@@ -5,6 +5,13 @@ import data
 import csv
 from datetime import datetime
 
+# --------------------------------------------------------- setting up global styling
+stylekit = {
+  "color_primary": "#FFB6C1",
+  "color_secondary": "#FFC0CB",
+}
+# ---------------------------------------------------------
+
 button_ids = {
     "journalSubmit": "Calming",
     "meditateSubmit": "Calming",
@@ -18,7 +25,6 @@ button_ids = {
   }
 
 def add_entry(activity_category):
-    print("added new entry!")
     current_date = datetime.now().strftime("%m/%d/%y")
 
     data_list = [current_date, activity_category]
@@ -142,6 +148,7 @@ def menu_action(state, action, payload):
 
 # --------------------------------------------------------- Display the GUI
 
+
 gui = Gui(pages=pages)
-gui.run(run_browser=False, use_reloader=True)
+gui.run(run_browser=False, stylekit=stylekit)
 # DO NOT ADD use_reloader=True IT DOES NOT WORK FOR MAC
