@@ -34,16 +34,10 @@ def add_entry(activity_category):
       csv_writer.writerow(data_list)
 
 
-def on_action(state, id):
-    if id == "loginSubmit":
-        pages = homeContent
-        pass
-    elif id == "logoutSubmit":
-        pages = loginContent
-    elif id in button_ids:
-        # pages = analyticsContent
-        add_entry(button_ids.get(id))
-        navigate(state, "analytics") # is there a better way to do this?
+def nav_analytics(state, id):
+    add_entry(button_ids.get(id))
+    navigate(state, "analytics") # is there a better way to do this?
+    pass
 
 # --------------------------------------------------------- Login Page
 loginContent = Html("""
@@ -52,24 +46,41 @@ loginContent = Html("""
 <h2>Login Page</h2>
 """)
 
-# navigates to home function
+# STORE USERNAME AND PASSWORD
+user = "user123"
+password = "password123"
+
+# navigate to home page after clicking submit
 def nav_home(state):
+    global user
+    global password
     navigate(state, "home")
     pass
+def updateUser(state):
+    global user
+    user = state.user
+    print("Current user is: ", user)
+def updatePassword(state):
+    global password
+    password = state.password
+    print("Current password is ", password)
 
 with tgb.Page() as loginContent:
-
     with tgb.layout("3 1"):
         tgb.html("p", "Username:")
-        tgb.input("", label="")
+        tgb.input("{user}", label="", on_change="updateUser")
         tgb.html("p", "Password:")
-        tgb.input("******", label="")
-    tgb.button("Submit", id="loginSubmit", on_action="nav_home")
+        tgb.input("{password}", label="", on_change="updatePassword", password=True)
+    tgb.button("Login", id="loginSubmit", on_action="nav_home")
 
 # --------------------------------------------------------- Home Page
 
+def nav_login(state):
+    navigate(state, "login")
+    pass
+
 homeContent = Html("""
-<h1>Welcome to Bliss</h1>
+<h1>Welcome to Bliss, {user}!</h1>
 
 Feeling devastated from work? We will get you mind back on track!
 """)
@@ -77,6 +88,7 @@ Feeling devastated from work? We will get you mind back on track!
 with tgb.Page() as homeContent:
     tgb.html("p", "How are you feeling today?")
     tgb.input("Enter text here", label="Feeling Today?")
+    tgb.button("Logout", ig="logoutSubmit", on_action="nav_login")
 
 # --------------------------------------------------------- calm Page
 calmContent = Html("""
