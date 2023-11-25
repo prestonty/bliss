@@ -2,12 +2,16 @@ from taipy import Gui
 import graphs
 import pandas as pd
 
+
 # constants
 RELAX = "Relaxing"
 CALM = "Calming"
 ENERGY = "Energizing"
 BREAKTYPE = "Break"
 DATE = "Date"
+COOLPINK = "#f8b4ce"
+COOLGREEN = "#a2c9ba"
+PASTELYELLOW = "#f8ecb4"
 
 path_to_csv = "test.csv"
 # getting list of dates
@@ -26,27 +30,28 @@ print(calm_lis)
 print(relax_lis)
 print(energy_lis)
 
-dataframe = pd.DataFrame({"Date":date_lis,
+dataframe = pd.DataFrame({DATE:date_lis,
                           RELAX:relax_lis,
                           ENERGY:energy_lis,
                           CALM:calm_lis})
 
 
 property_chart = {"type": "bar",
-                  "x": "Date",
+                  "x": DATE,
                   "y[1]": RELAX,
                   "y[2]": ENERGY,
                   "y[3]": CALM,
-                  "color[1]": "green",
-                  "color[2]": "grey",
-                  "color[3]": "red",
-
+                  "color[1]": COOLPINK,
+                  "color[2]": COOLGREEN,
+                  "color[3]": PASTELYELLOW,
                  }
 
-# page = """
+'''
+page = """
+# Analytics
+<|{dataframe}|chart|properties={property_chart}|>
 
-# <|{dataframe}|chart|properties={property_chart}|>
+"""
 
-# """
-
-# Gui(page).run()
+Gui(page).run(run_browser=False, stylekit=stylekit)
+'''
