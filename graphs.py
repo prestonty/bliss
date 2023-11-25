@@ -64,4 +64,10 @@ def set_breaks(df, d):
             relaxnum += 1
         elif break_type == ENERGY:
             energynum += 1
+    if (calmnum == 0):
+        calmnum = 0.001
+    if (relaxnum == 0):
+        relaxnum = 0.001
+    if (energynum == 0):
+        energynum = 0.001      
     return [calmnum, relaxnum, energynum]

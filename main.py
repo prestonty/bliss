@@ -2,6 +2,31 @@ from taipy import Gui
 from taipy.gui import Html, navigate
 import taipy.gui.builder as tgb
 import data
+import csv
+from datetime import datetime
+
+button_ids = {
+    "journalSubmit": "Calming",
+    "meditateSubmit": "Calming",
+    "ambientSubmit": "Calming",
+    "exerciseSubmit": "Energizing",
+    "hikingSubmit": "Energizing",
+    "napSubmit": "Energizing",
+    "breathingSubmit": "Relaxing",
+    "readingSubmit": "Relaxing",
+    "massageSubmit": "Relaxing"
+  }
+
+def add_entry(activity_category):
+    print("added new entry!")
+    current_date = datetime.now().strftime("%m/%d/%y")
+
+    data_list = [current_date, activity_category]
+
+    with open('test.csv', 'a', newline='') as csvfile:
+      csv_writer = csv.writer(csvfile)
+      csv_writer.writerow(data_list)
+
 
 def on_action(state, id):
     if id == "loginSubmit":
@@ -9,6 +34,10 @@ def on_action(state, id):
         pass
     elif id == "logoutSubmit":
         pages = loginContent
+    elif id in button_ids:
+        # pages = analyticsContent
+        add_entry(button_ids.get(id))
+        navigate(state, "analytics") # is there a better way to do this?
 
 # --------------------------------------------------------- Login Page
 loginContent = Html("""
@@ -65,9 +94,9 @@ with tgb.Page() as energyContent:
     tgb.html("p", "Choose an energetic activity for today's break:")
     # i would like to add images
 
-    tgb.button("Exercise Routines", id="journalSubmit")
-    tgb.button("idk", id="meditateSubmit")
-    tgb.button("still done know", id="ambientSubmit")
+    tgb.button("Exercise Routines", id="exerciseSubmit")
+    tgb.button("Hiking", id="hikingSubmit")
+    tgb.button("Power Nap", id="napSubmit")
 # --------------------------------------------------------- relax Page
 relaxContent = Html("""
 <h1>Welcome To the Relax Zone</h1>
@@ -77,9 +106,9 @@ with tgb.Page() as relaxContent:
     tgb.html("p", "Choose a relaxing activity for today's break:")
     # i would like to add images
 
-    tgb.button("Breathing", id="journalSubmit")
-    tgb.button("idk", id="meditateSubmit")
-    tgb.button("idk man", id="ambientSubmit")
+    tgb.button("Deep Breathing", id="breathingSubmit")
+    tgb.button("Reading", id="readingSubmit")
+    tgb.button("Massage", id="massageSubmit")
 
 # --------------------------------------------------------- Analytics Page
 analyticsContent = """
@@ -92,9 +121,9 @@ with tgb.Page() as relaxContent:
     tgb.html("p", "Choose a relaxing activity for today's break:")
     # i would like to add images
 
-    tgb.button("Breathing", id="journalSubmit")
-    tgb.button("idk", id="meditateSubmit")
-    tgb.button("idk man", id="ambientSubmit")
+    tgb.button("Deep Breathing", id="breathingSubmit")
+    tgb.button("Reading", id="readingSubmit")
+    tgb.button("Massage", id="massageSubmit")
 # --------------------------------------------------------- Routing between pages
 pages = {
     "/": "<|menu|lov={page_names}|on_action=menu_action|>",
@@ -114,5 +143,5 @@ def menu_action(state, action, payload):
 # --------------------------------------------------------- Display the GUI
 
 gui = Gui(pages=pages)
-gui.run(run_browser=False)
+gui.run(run_browser=False, use_reloader=True)
 # DO NOT ADD use_reloader=True IT DOES NOT WORK FOR MAC
