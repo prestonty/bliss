@@ -40,19 +40,32 @@ loginContent = Html("""
 <h2>Login Page</h2>
 """)
 
-# navigates to home function
+# STORE USERNAME AND PASSWORD
+user = "user123"
+password = "password123"
+
+# navigate to home page after clicking submit
 def nav_home(state):
+    global user
+    global password
     navigate(state, "home")
     pass
+def updateUser(state):
+    global user
+    user = state.user
+    print("Current user is: ", user)
+def updatePassword(state):
+    global password
+    password = state.password
+    print("Current password is ", password)
 
 with tgb.Page() as loginContent:
-
     with tgb.layout("3 1"):
         tgb.html("p", "Username:")
-        tgb.input("", label="")
+        tgb.input("{user}", label="", on_change="updateUser")
         tgb.html("p", "Password:")
-        tgb.input("******", label="")
-    tgb.button("Submit", id="loginSubmit", on_action="nav_home")
+        tgb.input("{password}", label="", on_change="updatePassword", password=True)
+    tgb.button("Login", id="loginSubmit", on_action="nav_home")
 
 # --------------------------------------------------------- Home Page
 
@@ -61,7 +74,7 @@ def nav_login(state):
     pass
 
 homeContent = Html("""
-<h1>Welcome to Bliss</h1>
+<h1>Welcome to Bliss, {user}!</h1>
 
 Feeling devastated from work? We will get you mind back on track!
 """)
