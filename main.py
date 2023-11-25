@@ -28,16 +28,10 @@ def add_entry(activity_category):
       csv_writer.writerow(data_list)
 
 
-def on_action(state, id):
-    if id == "loginSubmit":
-        pages = homeContent
-        pass
-    elif id == "logoutSubmit":
-        pages = loginContent
-    elif id in button_ids:
-        # pages = analyticsContent
-        add_entry(button_ids.get(id))
-        navigate(state, "analytics") # is there a better way to do this?
+def nav_analytics(state, id):
+    add_entry(button_ids.get(id))
+    navigate(state, "analytics") # is there a better way to do this?
+    pass
 
 # --------------------------------------------------------- Login Page
 loginContent = Html("""
@@ -62,6 +56,10 @@ with tgb.Page() as loginContent:
 
 # --------------------------------------------------------- Home Page
 
+def nav_login(state):
+    navigate(state, "login")
+    pass
+
 homeContent = Html("""
 <h1>Welcome to Bliss</h1>
 
@@ -71,6 +69,7 @@ Feeling devastated from work? We will get you mind back on track!
 with tgb.Page() as homeContent:
     tgb.html("p", "How are you feeling today?")
     tgb.input("Enter text here", label="Feeling Today?")
+    tgb.button("Logout", ig="logoutSubmit", on_action="nav_login")
 
 # --------------------------------------------------------- calm Page
 calmContent = Html("""
