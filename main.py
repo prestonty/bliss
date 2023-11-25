@@ -114,4 +114,5 @@ def menu_action(state, action, payload):
 # --------------------------------------------------------- Display the GUI
 
 gui = Gui(pages=pages)
-gui.run(run_browser=False, use_reloader=True)
+gui.run(run_browser=False)
+# DO NOT ADD use_reloader=True IT DOES NOT WORK FOR MAC
