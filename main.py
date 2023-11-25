@@ -82,25 +82,23 @@ with tgb.Page() as relaxContent:
 # --------------------------------------------------------- relax Page
 
 
-root_md="<|menu|label=Menu|lov={[('calmContent', 'Calming'), ('energyContent', 'Energizing'), ('relaxContent', 'Relaxation')]}|on_action=on_menu|>"
-loginPage="## This is page 1"
-home="## This is page 2"
-
-#trying to navigate between pages using the buttons (it aint working)
-def on_menu(state, var_name, function_name, info):
-    page = info['args'][0]
-    navigate(state, to=page)
-
-#trying to navigate to home (it aint working)
-def go_home(state):
-    navigate(state, "home")
+# root_md="<|menu|label=Menu|lov={[('calmContent', 'Calming'), ('energyContent', 'Energizing'), ('relaxContent', 'Relaxation')]}|on_action=on_menu|>"
+# loginPage="## This is page 1"
+# home="## This is page 2"
 
 pages = {
-    "/": root_md,
+    "/": "<|menu|lov={page_names}|on_action=menu_action|>",
     "login": loginContent,
     "home": homeContent,
     "calm": calmContent,
     "energy": energyContent,
     "relax": relaxContent,
 }
-Gui(pages=pages).run()
+page_names = [page for page in pages.keys() if page != "/"]
+
+def menu_action(state, action, payload):
+    page = payload["args"][0]
+    navigate(state, page)
+
+gui = Gui(pages=pages)
+gui.run(run_browser=False, use_reloader=True)
