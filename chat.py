@@ -26,4 +26,4 @@ def genActivity(topic):
     # response is a string that is the answer to the topic in less than 60 words
     return response
 
-print(genActivity(topic))
+# print(genActivity(topic))

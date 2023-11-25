@@ -3,6 +3,7 @@ from taipy.gui import Html, navigate
 import taipy.gui.builder as tgb
 import data
 import csv
+import graphs
 from datetime import datetime
 
 button_ids = {
@@ -30,6 +31,7 @@ def add_entry(activity_category):
 
 def nav_analytics(state, id):
     add_entry(button_ids.get(id))
+    graphs.get_last_row('test.csv')
     navigate(state, "analytics") # is there a better way to do this?
     pass
 
