@@ -12,12 +12,16 @@ def on_action(state, id):
 
 # --------------------------------------------------------- Login Page
 loginContent = Html("""
-
-<h1>Login Page</h1>
-
+<h1>Join Bliss Today</h1>
+                    
+<h2>Login Page</h2>
 """)
 
-# must declare before page
+# navigates to home function
+def nav_home(state):
+    navigate(state, "home")
+    pass
+
 with tgb.Page() as loginContent:
 
     with tgb.layout("3 1"):
@@ -25,10 +29,7 @@ with tgb.Page() as loginContent:
         tgb.input("", label="")
         tgb.html("p", "Password:")
         tgb.input("******", label="")
-    tgb.button("Submit", id="loginSubmit")
-
-# ---------------------------------------------------------
-
+    tgb.button("Submit", id="loginSubmit", on_action="nav_home")
 
 # --------------------------------------------------------- Home Page
 
@@ -79,13 +80,20 @@ with tgb.Page() as relaxContent:
     tgb.button("Breathing", id="journalSubmit")
     tgb.button("idk", id="meditateSubmit")
     tgb.button("idk man", id="ambientSubmit")
-# --------------------------------------------------------- relax Page
 
+# --------------------------------------------------------- Analytics Page
+relaxContent = Html("""
+<h1>Track your progress!</h1>
+""")
 
-# root_md="<|menu|label=Menu|lov={[('calmContent', 'Calming'), ('energyContent', 'Energizing'), ('relaxContent', 'Relaxation')]}|on_action=on_menu|>"
-# loginPage="## This is page 1"
-# home="## This is page 2"
+with tgb.Page() as relaxContent:
+    tgb.html("p", "Choose a relaxing activity for today's break:")
+    # i would like to add images
 
+    tgb.button("Breathing", id="journalSubmit")
+    tgb.button("idk", id="meditateSubmit")
+    tgb.button("idk man", id="ambientSubmit")
+# --------------------------------------------------------- Routing between pages
 pages = {
     "/": "<|menu|lov={page_names}|on_action=menu_action|>",
     "login": loginContent,
@@ -99,6 +107,8 @@ page_names = [page for page in pages.keys() if page != "/"]
 def menu_action(state, action, payload):
     page = payload["args"][0]
     navigate(state, page)
+
+# --------------------------------------------------------- Display the GUI
 
 gui = Gui(pages=pages)
 gui.run(run_browser=False, use_reloader=True)
