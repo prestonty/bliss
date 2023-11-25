@@ -43,10 +43,10 @@ property_chart = {"type": "bar",
 
                  }
 
-page = """
+# page = """
 
-<|{dataframe}|chart|properties={property_chart}|>
+# <|{dataframe}|chart|properties={property_chart}|>
 
-"""
+# """
 
-Gui(page).run()
+# Gui(page).run()

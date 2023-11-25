@@ -1,7 +1,7 @@
 from taipy import Gui
 from taipy.gui import Html, navigate
 import taipy.gui.builder as tgb
-
+import data
 
 def on_action(state, id):
     if id == "loginSubmit":
@@ -82,9 +82,11 @@ with tgb.Page() as relaxContent:
     tgb.button("idk man", id="ambientSubmit")
 
 # --------------------------------------------------------- Analytics Page
-relaxContent = Html("""
-<h1>Track your progress!</h1>
-""")
+analyticsContent = """
+
+<|{data.dataframe}|chart|properties={data.property_chart}|>
+
+"""
 
 with tgb.Page() as relaxContent:
     tgb.html("p", "Choose a relaxing activity for today's break:")
@@ -101,6 +103,7 @@ pages = {
     "calm": calmContent,
     "energy": energyContent,
     "relax": relaxContent,
+    "analytics": analyticsContent,
 }
 page_names = [page for page in pages.keys() if page != "/"]
 
