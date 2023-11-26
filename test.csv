@@ -21,6 +21,7 @@ Date,Break
 11/25/23,Calming
 11/25/23,Energizing
 11/25/23,Energizing
+<<<<<<< HEAD
 11/26/23,Energizing
 11/26/23,Calming
 11/26/23,Calming
@@ -40,3 +41,9 @@ Date,Break
 11/26/23,Energizing
 11/26/23,Relaxing
 11/26/23,Relaxing
+=======
+11/26/23,Calming
+11/26/23,Calming
+11/26/23,Energizing
+11/26/23,Calming
+>>>>>>> f4e8d52f69df35f3f8467e918e2c998d4280feba
