@@ -51,4 +51,3 @@ property_chart = {"type": "bar",
                   "color[2]": COOLGREEN,
                   "color[3]": PASTELYELLOW,
                  }
-

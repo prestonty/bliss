@@ -68,12 +68,8 @@ def on_action(state, id):
         state.dataframe = pd.DataFrame(data_dict)
 
 # --------------------------------------------------------- Login Page
-loginContent = Html("""
-<h1>Join Bliss Today</h1>
-                    
-<h2>Login Page</h2>
-""")
 
+loginContent = Html("""""")
 # STORE USERNAME AND PASSWORD
 user = "user123"
 password = "password123"
@@ -93,13 +89,27 @@ def updatePassword(state):
     password = state.password
     print("Current password is ", password)
 
+# loginContent = Html("""
+# <h1>Join bliss Today"</h1>
+# <|layout|columns=1 1|
+# <p>Username: </p>
+# <|{user}|input|label=""|on_change=updateUser|>
+# <p>Password: </p>
+# <|{password}|input|label=""|on_change=updatePassword|password=True|>              
+# |>
+# <|Login|button|id="loginSubmit"|on_action=nav_home|>
+# """)
+
 with tgb.Page() as loginContent:
+    tgb.html("h1", "Join bliss Today")
     with tgb.layout("3 1"):
         tgb.html("p", "Username:")
         tgb.input("{user}", label="", on_change="updateUser")
         tgb.html("p", "Password:")
         tgb.input("{password}", label="", on_change="updatePassword", password=True)
     tgb.button("Login", id="loginSubmit", on_action="nav_home")
+
+# background-image: url("paper.gif");
 
 # --------------------------------------------------------- Home Page
 
@@ -141,7 +151,7 @@ with tgb.Page() as calmContent:
 energyContent = Html("""""")
 
 with tgb.Page() as energyContent:
-    tgb.html("h1", "Welcome To the Energy Zone {user}")
+    tgb.html("h1", "Welcome To the Energy Zone")
     tgb.html("p", "Feeling devastated from work? We will get you mind back on track!")
     tgb.html("p", "Energy. It's what fuels us and what drives us forward.")
     tgb.html("p", "Choose an energetic activity for today's break:")
@@ -196,9 +206,12 @@ def submitQuestion(state):
     state.answer = chat.genActivity(prompt + " answered in less than " + str(wordCount) +" words")
     pass
 
+
 chatContent = """
-<h1>Introducing Bliss's chatbot, Arcadia, powered by Cohere's AI!</h1>
+<h1>Introducing bliss' chatbot, Arcadia, powered by Cohere's AI!</h1>
 <br/>
+<img src="waves.png"/>
+
 <p>Hi, I am Arcadia, here to help. I can recommend any relaxing, energetic, or calming activities for you to do!</p>
 <|{userQuestion}|input|label="ask here"|on_change=updateUserQuestion|>
 <|Ask|button|id="questionSubmit"|on_action=submitQuestion|>
