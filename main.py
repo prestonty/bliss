@@ -7,6 +7,13 @@ import graphs
 import chat
 from datetime import datetime
 
+# --------------------------------------------------------- setting up global styling
+stylekit = {
+  "color_primary": "#FFB6C1",
+  "color_secondary": "#FFC0CB",
+}
+# ---------------------------------------------------------
+
 button_ids = {
     "journalSubmit": "Calming",
     "meditateSubmit": "Calming",
@@ -20,7 +27,6 @@ button_ids = {
   }
 
 def add_entry(activity_category):
-    print("added new entry!")
     current_date = datetime.now().strftime("%m/%d/%y")
 
     data_list = [current_date, activity_category]
@@ -30,11 +36,14 @@ def add_entry(activity_category):
       csv_writer.writerow(data_list)
 
 
-def nav_analytics(state, id):
-    add_entry(button_ids.get(id))
-    graphs.get_last_row('test.csv')
-    navigate(state, "analytics") # is there a better way to do this?
-    pass
+def on_action(state, id):
+    if id == "loginSubmit":
+        pages = homeContent
+    elif id == "logoutSubmit":
+        pages = loginContent
+    elif id in button_ids:
+        add_entry(button_ids.get(id))
+        navigate(state, "analytics")
 
 # --------------------------------------------------------- Login Page
 loginContent = Html("""
@@ -43,41 +52,24 @@ loginContent = Html("""
 <h2>Login Page</h2>
 """)
 
-# STORE USERNAME AND PASSWORD
-user = "user123"
-password = "password123"
-
-# navigate to home page after clicking submit
+# navigates to home function
 def nav_home(state):
-    global user
-    global password
     navigate(state, "home")
     pass
-def updateUser(state):
-    global user
-    user = state.user
-    print("Current user is: ", user)
-def updatePassword(state):
-    global password
-    password = state.password
-    print("Current password is ", password)
 
 with tgb.Page() as loginContent:
+
     with tgb.layout("3 1"):
         tgb.html("p", "Username:")
-        tgb.input("{user}", label="", on_change="updateUser")
+        tgb.input("", label="")
         tgb.html("p", "Password:")
-        tgb.input("{password}", label="", on_change="updatePassword", password=True)
-    tgb.button("Login", id="loginSubmit", on_action="nav_home")
+        tgb.input("******", label="")
+    tgb.button("Submit", id="loginSubmit", on_action="on_action")
 
 # --------------------------------------------------------- Home Page
 
-def nav_login(state):
-    navigate(state, "login")
-    pass
-
 homeContent = Html("""
-<h1>Welcome to Bliss, {user}!</h1>
+<h1>Welcome to Bliss</h1>
 
 Feeling devastated from work? We will get you mind back on track!
 """)
@@ -85,7 +77,7 @@ Feeling devastated from work? We will get you mind back on track!
 with tgb.Page() as homeContent:
     tgb.html("p", "How are you feeling today?")
     tgb.input("Enter text here", label="Feeling Today?")
-    tgb.button("Logout", id="logoutSubmit", on_action="nav_login")
+    tgb.button("Logout", id="logoutSubmit", on_action="on_action")
 
 # --------------------------------------------------------- calm Page
 calmContent = Html("""
@@ -93,6 +85,7 @@ calmContent = Html("""
 No yelling allowed.""")
 
 with tgb.Page() as calmContent:
+    tgb.html("p", "Calmness. Moments of peace. Like a cold breeze in the autumn night.")
     tgb.html("p", "Choose a calm activity for today's break:")
     # i would like to add images
 
@@ -106,6 +99,7 @@ energyContent = Html("""
 BE AS LOUD AS YOU WANT!!!""")
 
 with tgb.Page() as energyContent:
+    tgb.html("p", "Energy. It's what fuels us and what drives us forward.")
     tgb.html("p", "Choose an energetic activity for today's break:")
     # i would like to add images
 
@@ -118,7 +112,11 @@ relaxContent = Html("""
 """)
 
 with tgb.Page() as relaxContent:
+<<<<<<< HEAD
     tgb.html("h1", "Welcome To the Relax Zone")
+=======
+    tgb.html("p", "Relaxation. Unwinding into a state of trainquility.")
+>>>>>>> ca6ef2d97514b6f276e686dc2b76a5d2ad43fd34
     tgb.html("p", "Choose a relaxing activity for today's break:")
     # i would like to add images
 
@@ -134,6 +132,7 @@ analyticsContent = """
 """
 
 with tgb.Page() as relaxContent:
+    tgb.html("p", "Relaxation. Unwinding into a state of trainquility.")
     tgb.html("p", "Choose a relaxing activity for today's break:")
     # i would like to add images
 
@@ -188,6 +187,7 @@ def menu_action(state, action, payload):
 
 # --------------------------------------------------------- Display the GUI
 
+
 gui = Gui(pages=pages)
-gui.run(run_browser=False, use_reloader=True)
+gui.run(run_browser=False, stylekit=stylekit)
 # DO NOT ADD use_reloader=True IT DOES NOT WORK FOR MAC
