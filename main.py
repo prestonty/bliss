@@ -49,7 +49,7 @@ def add_entry(activity_category):
       csv_writer.writerow(data_list)
 
 def on_action(state, id):
-    # we could remove the if statements for login logout
+    # Code to update graph
     if id == "loginSubmit":
         pages = homeContent
         pass
@@ -89,34 +89,46 @@ def updatePassword(state):
     password = state.password
     print("Current password is ", password)
 
-# loginContent = Html("""
-# <h1>Join bliss Today"</h1>
-# <|layout|columns=1 1|
-# <p>Username: </p>
-# <|{user}|input|label=""|on_change=updateUser|>
-# <p>Password: </p>
-# <|{password}|input|label=""|on_change=updatePassword|password=True|>              
-# |>
-# <|Login|button|id="loginSubmit"|on_action=nav_home|>
-# """)
+loginContent = """
+<h1>Join bliss Today</h1>
+<p>Username: </p>
+<|{user}|input|on_change=updateUser|>
+<p>Password: </p>
+<|{password}|input|on_change=updatePassword|password=True|>              
+<|Login|button|id="loginSubmit"|on_action=nav_home|>
+"""
 
-with tgb.Page() as loginContent:
-    tgb.html("h1", "Join bliss Today")
-    with tgb.layout("3 1"):
-        tgb.html("p", "Username:")
-        tgb.input("{user}", label="", on_change="updateUser")
-        tgb.html("p", "Password:")
-        tgb.input("{password}", label="", on_change="updatePassword", password=True)
-    tgb.button("Login", id="loginSubmit", on_action="nav_home")
+# with tgb.Page() as loginContent:
+#     tgb.html("h1", "Join bliss Today")
+#     with tgb.layout("3 1"):
+#         tgb.html("p", "Username:")
+#         tgb.input("{user}", label="", on_change="updateUser")
+#         tgb.html("p", "Password:")
+#         tgb.input("{password}", label="", on_change="updatePassword", password=True)
+#     tgb.button("Login", id="loginSubmit", on_action="nav_home")
 
-# background-image: url("paper.gif");
 
 # --------------------------------------------------------- Home Page
 
 homeContent = tgb.Page()
 
+def nav_calm(state):
+    navigate(state, "calm")
+    pass
+
+def nav_energy(state):
+    navigate(state, "energy")
+    pass
+
+def nav_relax(state):
+    navigate(state, "relax")
+    pass
+
 homeContent = Html("""
-    <div style="background-image: url('imgs/home-page.png'); background-size: cover; width: 100vw; height: 100vh;">
+    <div style="background-image: url('images/main_home.png'); background-size: cover; width: 95vw; height: 100vh;">
+                   <button style="font-family: 'Trebuchet MS', sans-serif; font-size:24px; color:white; border-radius:30px; border-color:white; background-color:#80ad9b; margin-left:360px; margin-top:340px; margin-bottom:100px" type="button" onclick="nav_calm()">Calm Breaks</button>
+                   <button style="font-family: 'Trebuchet MS', sans-serif; font-size:24px; color:white; border-radius:30px; border-color:white; background-color:#80ad9b; margin-left:200px; margin-bottom:100px" type="button" onclick="nav_energy()">Energetic Breaks</button>
+                   <button style="font-family: 'Trebuchet MS', sans-serif; font-size:24px; color:white; border-radius:30px; border-color:white; background-color:#80ad9b; margin-left:200px; margin-bottom:100px" type="button" onclick="nav_relax()">Relaxing Breaks</button>
     </div>
 """)
 
@@ -136,7 +148,8 @@ def nav_login(state):
 # --------------------------------------------------------- calm Page
 calmContent = Html("""
 <h1>Welcome To the Calm Zone</h1>
-No yelling allowed.""")
+No yelling allowed.
+""")
 
 with tgb.Page() as calmContent:
     tgb.html("p", "Calmness. Moments of peace. Like a cold breeze in the autumn night.")
@@ -148,7 +161,15 @@ with tgb.Page() as calmContent:
     tgb.button("Ambient Noise", id="ambientSubmit")
 
 # --------------------------------------------------------- energy Page
-energyContent = Html("""""")
+energyContent = """
+<h1>Welcome To the Energy Zone</h1>
+<p>Feeling devastated from work? We will get you mind back on track!</p>
+<p>Choose an energetic activity for today's break:</p>
+
+<
+"""
+
+
 
 with tgb.Page() as energyContent:
     tgb.html("h1", "Welcome To the Energy Zone")
@@ -210,7 +231,6 @@ def submitQuestion(state):
 chatContent = """
 <h1>Introducing bliss' chatbot, Arcadia, powered by Cohere's AI!</h1>
 <br/>
-<img src="waves.png"/>
 
 <p>Hi, I am Arcadia, here to help. I can recommend any relaxing, energetic, or calming activities for you to do!</p>
 <|{userQuestion}|input|label="ask here"|on_change=updateUserQuestion|>
