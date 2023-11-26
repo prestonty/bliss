@@ -148,73 +148,72 @@ def nav_login(state):
 # --------------------------------------------------------- calm Page
 calmContent = """
 <h1>Welcome To the Calm Zone</h1>
-<p>Calmness. Moments of peace. Like a cold breeze in the autumn night.</p>
-<p style="margin-bottom:30px;">Choose a calm activity for today's break:</p>
+<p style="font-size:18px;">Calmness. Moments of peace. Like a cold breeze in the autumn night.</p>
+<p style="margin-bottom:30px; font-size:18px;">Choose a calm activity for today's break:</p>
 
 <|Journaling|button|id=journalSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
     <img style="margin-bottom: 20px; margin-top: 15px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
-    <p style="">Journalling can be a great way to destress and calm down! It means recording your thoughts, reflections, and experiences in some sort of diary.</p>
+    <p style="font-size:24px;">Journalling can be a great way to destress and calm down! It means recording your thoughts, reflections, and experiences in some sort of diary.</p>
 </div>
 <|Meditation|button|id=meditateSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
     <img style="margin-bottom: 20px; margin-top: 15px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
-    <p style="">Journalling can be a great way to destress and calm down! It means recording your thoughts, reflections, and experiences in some sort of diary.</p>
+    <p style="font-size:24px;">Meditation reduces stress, enhances focus, and cultivates mindfulness. A brief practice fosters mental clarity, improves decision-making, and contributes to overall well-being in the workplace.</p>
 </div>
 <|Ambient Sound|button|id=ambientSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
     <img style="margin-bottom: 20px; margin-top: 15px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
-    <p style="">Journalling can be a great way to destress and calm down! It means recording your thoughts, reflections, and experiences in some sort of diary.</p>
+    <p style="font-size:24px;">Listening to ambient sounds in the office promotes relaxation, reduces stress, and enhances concentration. It creates a soothing environment, improving mood and productivity during work.</p>
 </div>
 """
-
 
 # --------------------------------------------------------- energy Page
 energyContent = """
 <h1>Welcome To the Energy Zone</h1>
-<p>"Energy. It's what fuels us and what drives us forward.</p>
-<p style="margin-bottom:30px;">Choose an energetic activity for today's break:</p>
+<p style="font-size:18px;">"Energy. It's what fuels us and what drives us forward.</p>
+<p style="margin-bottom:30px font-size:18px;">Choose an energetic activity for today's break:</p>
 
 <|Exercise Routines|button|id=exerciseSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
     <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
-    <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
+    <p style="font-size:24px;">Office exercise boosts energy, reduces stress, and enhances focus. Quick routines like desk stretches or chair squats improve physical well-being, fostering productivity and overall health at work.</p>
 </div>
 
 <|Hiking|button|id=hikingSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
     <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
-    <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
+    <p style="font-size:24px;">Hiking promotes cardiovascular health, reduces stress, and enhances mental well-being. Connecting with nature, it improves fitness, leading to a holistic boost in physical and mental health.</p>
 </div>
 
 <|Power Nap|button|id=napSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
     <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
-    <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
+    <p style="font-size:24px;">A power nap revitalizes, enhances alertness, and improves mood. In just a short break, it boosts cognitive function, creativity, and overall productivity, fostering a refreshed state of mind.</p>
 </div>
 """
 # --------------------------------------------------------- relax Page
 relaxContent = """
 <h1>Welcome To the Relax Zone</h1>
-<p>Relaxation. Unwinding into a state of tranquility.</p>
-<p style="margin-bottom:30px;">"Choose a relaxing activity for today's break:</p>
+<p style="font-size:18px;">Relaxation. Unwinding into a state of tranquility.</p>
+<p style="margin-bottom:30px; font-size:18px;">"Choose a relaxing activity for today's break:</p>
 
 <|Deep Breathing|button|id=breathingSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
     <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
-    <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
+    <p style="font-size:24px;">Office deep breathing reduces stress, enhances focus, and calms the mind. A quick practice promotes relaxation, boosts oxygen flow, and supports overall mental well-being during work.</p>
 </div>
 
 <|Reading|button|id=readingSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
     <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
-    <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
+    <p style="font-size:24px;">Reading in the office cultivates knowledge, sparks creativity, and reduces stress. It provides a mental break, fostering focus, empathy, and a positive work environment.</p>
 </div>
 
 <|Massage|button|id=massageSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
     <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
-    <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
+    <p style="font-size:24px;">Massages alleviate tension, reduce stress, and improve circulation. A brief session enhances mood, boosts productivity, and supports overall well-being, creating a more relaxed work environment.</p>
 </div>
 """
 # --------------------------------------------------------- Analytics Page
