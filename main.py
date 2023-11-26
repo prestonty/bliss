@@ -158,12 +158,12 @@ calmContent = """
 </div>
 <|Meditation|button|id=meditateSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
-    <img style="margin-bottom: 20px; margin-top: 15px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
+    <img style="margin-bottom: 20px; margin-top: 15px; width: 200px; height: auto; margin-right: 20px;" src="images/meditation.png" alt="Description of the image"></img>
     <p style="">Journalling can be a great way to destress and calm down! It means recording your thoughts, reflections, and experiences in some sort of diary.</p>
 </div>
 <|Ambient Sound|button|id=ambientSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
-    <img style="margin-bottom: 20px; margin-top: 15px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
+    <img style="margin-bottom: 20px; margin-top: 15px; width: 200px; height: auto; margin-right: 20px;" src="images/ambient.png" alt="Description of the image"></img>
     <p style="">Journalling can be a great way to destress and calm down! It means recording your thoughts, reflections, and experiences in some sort of diary.</p>
 </div>
 """
@@ -172,24 +172,24 @@ calmContent = """
 # --------------------------------------------------------- energy Page
 energyContent = """
 <h1>Welcome To the Energy Zone</h1>
-<p>"Energy. It's what fuels us and what drives us forward.</p>
+<p>Energy. It's what fuels us and what drives us forward!</p>
 <p style="margin-bottom:30px;">Choose an energetic activity for today's break:</p>
 
 <|Exercise Routines|button|id=exerciseSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
-    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
+    <img style="margin-bottom: 30px; width: 200px; height: auto; margin-right: 20px;" src="images/exercise.png" alt="Description of the image"></img>
     <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
 </div>
 
 <|Hiking|button|id=hikingSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
-    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
+    <img style="margin-bottom: 30px; width: 200px; height: auto; margin-right: 20px;" src="images/hiking.png" alt="Description of the image"></img>
     <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
 </div>
 
 <|Power Nap|button|id=napSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
-    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
+    <img style="margin-bottom: 30px; width: 200px; height: auto; margin-right: 20px;" src="images/nap.png" alt="Description of the image"></img>
     <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
 </div>
 """
@@ -197,23 +197,23 @@ energyContent = """
 relaxContent = """
 <h1>Welcome To the Relax Zone</h1>
 <p>Relaxation. Unwinding into a state of tranquility.</p>
-<p style="margin-bottom:30px;">"Choose a relaxing activity for today's break:</p>
+<p style="margin-bottom: 30px;">"Choose a relaxing activity for today's break:</p>
 
 <|Deep Breathing|button|id=breathingSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
-    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
+    <img style="margin-bottom: 30px; width: 200px; height: auto; margin-right: 20px;" src="images/breathing.png" alt="Description of the image"></img>
     <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
 </div>
 
 <|Reading|button|id=readingSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
-    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
+    <img style="margin-bottom: 30px; width: 200px; height: auto; margin-right: 20px;" src="images/reading.png" alt="Description of the image"></img>
     <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
 </div>
 
 <|Massage|button|id=massageSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
-    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
+    <img style="margin-bottom: 30px; width: 200px; height: auto; margin-right: 20px;" src="images/massage.png" alt="Description of the image"></img>
     <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
 </div>
 """
