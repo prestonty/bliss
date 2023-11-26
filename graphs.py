@@ -33,6 +33,8 @@ def reset():
 
 # getters
 def get_calm():
+    print("hi")
+    print(calm_breaks)
     return calm_breaks
 def get_energy():
     return energy_breaks

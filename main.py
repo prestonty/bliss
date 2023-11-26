@@ -82,6 +82,7 @@ calmContent = Html("""
 No yelling allowed.""")
 
 with tgb.Page() as calmContent:
+    tgb.html("p", "Calmness. Moments of peace. Like a cold breeze in the autumn night.")
     tgb.html("p", "Choose a calm activity for today's break:")
     # i would like to add images
 
@@ -95,6 +96,7 @@ energyContent = Html("""
 BE AS LOUD AS YOU WANT!!!""")
 
 with tgb.Page() as energyContent:
+    tgb.html("p", "Energy. It's what fuels us and what drives us forward.")
     tgb.html("p", "Choose an energetic activity for today's break:")
     # i would like to add images
 
@@ -107,6 +109,7 @@ relaxContent = Html("""
 """)
 
 with tgb.Page() as relaxContent:
+    tgb.html("p", "Relaxation. Unwinding into a state of trainquility.")
     tgb.html("p", "Choose a relaxing activity for today's break:")
     # i would like to add images
 
@@ -122,6 +125,7 @@ analyticsContent = """
 """
 
 with tgb.Page() as relaxContent:
+    tgb.html("p", "Relaxation. Unwinding into a state of trainquility.")
     tgb.html("p", "Choose a relaxing activity for today's break:")
     # i would like to add images
 
