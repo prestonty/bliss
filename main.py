@@ -38,20 +38,11 @@ def add_entry(activity_category):
 
 def on_action(state, id):
     # we could remove the if statements for login logout
-    if id == "loginSubmit":
-        pages = homeContent
-    elif id == "logoutSubmit":
-        pages = loginContent
     if id in button_ids:
         add_entry(button_ids.get(id))
         navigate(state, "analytics")
 
 # --------------------------------------------------------- Login Page
-loginContent = Html("""
-<h1>Join Bliss Today</h1>
-                    
-<h2>Login Page</h2>
-""")
 
 # STORE USERNAME AND PASSWORD
 user = "user123"
@@ -72,13 +63,27 @@ def updatePassword(state):
     password = state.password
     print("Current password is ", password)
 
-with tgb.Page() as loginContent:
-    with tgb.layout("3 1"):
-        tgb.html("p", "Username:")
-        tgb.input("{user}", label="", on_change="updateUser")
-        tgb.html("p", "Password:")
-        tgb.input("{password}", label="", on_change="updatePassword", password=True)
-    tgb.button("Login", id="loginSubmit", on_action="nav_home")
+loginContent = Html("""
+<h1>Join bliss Today"</h1>
+<|layout|columns=1 1|
+<p>Username: </p>
+<|{user}|input|label=""|on_change=updateUser|>
+<p>Password: </p>
+<|{password}|input|label=""|on_change=updatePassword|password=True|>              
+|>
+<|Login|button|id="loginSubmit"|on_action=nav_home|>
+""")
+
+# with tgb.Page() as loginContent:
+#     tgb.html("h1", "Join bliss Today")
+#     with tgb.layout("3 1"):
+#         tgb.html("p", "Username:")
+#         tgb.input("{user}", label="", on_change="updateUser")
+#         tgb.html("p", "Password:")
+#         tgb.input("{password}", label="", on_change="updatePassword", password=True)
+#     tgb.button("Login", id="loginSubmit", on_action="nav_home")
+
+# background-image: url("paper.gif");
 
 # --------------------------------------------------------- Home Page
 
@@ -91,7 +96,7 @@ def nav_login(state):
 
 # must declare before page
 with tgb.Page() as homeContent:
-    tgb.html("h1", "Welcome to Bliss, {user}!")
+    tgb.html("h1", "Welcome to Bliss!")
     tgb.html("p", "Feeling devastated from work? We will get you mind back on track!")
     tgb.html("p", "How are you feeling today?")
     tgb.input("Enter text here", label="Feeling Today?")
@@ -115,7 +120,7 @@ with tgb.Page() as calmContent:
 energyContent = Html("""""")
 
 with tgb.Page() as energyContent:
-    tgb.html("h1", "Welcome To the Energy Zone {user}")
+    tgb.html("h1", "Welcome To the Energy Zone")
     tgb.html("p", "Feeling devastated from work? We will get you mind back on track!")
     tgb.html("p", "Energy. It's what fuels us and what drives us forward.")
     tgb.html("p", "Choose an energetic activity for today's break:")
@@ -171,9 +176,12 @@ def submitQuestion(state):
     state.answer = chat.genActivity(prompt + " answered in less than " + str(wordCount) +" words")
     pass
 
+
 chatContent = """
 <h1>Introducing Bliss's chatbot, Arcadia, powered by Cohere's AI!</h1>
 <br/>
+<img src="waves.png"/>
+
 <p>Hi, I am Arcadia, here to help. I can recommend any relaxing, energetic, or calming activities for you to do!</p>
 <|{userQuestion}|input|label="ask here"|on_change=updateUserQuestion|>
 <|Ask|button|id="questionSubmit"|on_action=submitQuestion|>
