@@ -37,11 +37,12 @@ def add_entry(activity_category):
 
 
 def on_action(state, id):
+    # we could remove the if statements for login logout
     if id == "loginSubmit":
         pages = homeContent
     elif id == "logoutSubmit":
         pages = loginContent
-    elif id in button_ids:
+    if id in button_ids:
         add_entry(button_ids.get(id))
         navigate(state, "analytics")
 
@@ -52,32 +53,49 @@ loginContent = Html("""
 <h2>Login Page</h2>
 """)
 
+# STORE USERNAME AND PASSWORD
+user = "user123"
+password = "password123"
+
 # navigates to home function
 def nav_home(state):
+    global user
+    global password
     navigate(state, "home")
     pass
+def updateUser(state):
+    global user
+    user = state.user
+    print("Current user is: ", user)
+def updatePassword(state):
+    global password
+    password = state.password
+    print("Current password is ", password)
 
 with tgb.Page() as loginContent:
-
     with tgb.layout("3 1"):
         tgb.html("p", "Username:")
-        tgb.input("", label="")
+        tgb.input("{user}", label="", on_change="updateUser")
         tgb.html("p", "Password:")
-        tgb.input("******", label="")
-    tgb.button("Submit", id="loginSubmit", on_action="on_action")
+        tgb.input("{password}", label="", on_change="updatePassword", password=True)
+    tgb.button("Login", id="loginSubmit", on_action="nav_home")
 
 # --------------------------------------------------------- Home Page
 
-homeContent = Html("""
-<h1>Welcome to Bliss</h1>
+homeContent = Html("""""")
 
-Feeling devastated from work? We will get you mind back on track!
-""")
+# navigates to home function
+def nav_login(state):
+    navigate(state, "login")
+    pass
+
 # must declare before page
 with tgb.Page() as homeContent:
+    tgb.html("h1", "Welcome to Bliss, {user}!")
+    tgb.html("p", "Feeling devastated from work? We will get you mind back on track!")
     tgb.html("p", "How are you feeling today?")
     tgb.input("Enter text here", label="Feeling Today?")
-    tgb.button("Logout", id="logoutSubmit", on_action="on_action")
+    tgb.button("Logout", id="logoutSubmit", on_action="nav_login")
 
 # --------------------------------------------------------- calm Page
 calmContent = Html("""
@@ -94,11 +112,11 @@ with tgb.Page() as calmContent:
     tgb.button("Ambient Noise", id="ambientSubmit")
 
 # --------------------------------------------------------- energy Page
-energyContent = Html("""
-<h1>Welcome To the Energy Zone</h1>
-BE AS LOUD AS YOU WANT!!!""")
+energyContent = Html("""""")
 
 with tgb.Page() as energyContent:
+    tgb.html("h1", "Welcome To the Energy Zone {user}")
+    tgb.html("p", "Feeling devastated from work? We will get you mind back on track!")
     tgb.html("p", "Energy. It's what fuels us and what drives us forward.")
     tgb.html("p", "Choose an energetic activity for today's break:")
     # i would like to add images
@@ -107,19 +125,13 @@ with tgb.Page() as energyContent:
     tgb.button("Hiking", id="hikingSubmit")
     tgb.button("Power Nap", id="napSubmit")
 # --------------------------------------------------------- relax Page
-relaxContent = Html("""
-<h1>Welcome To the Relax Zone</h1>
-""")
+relaxContent = Html("""""")
 
 with tgb.Page() as relaxContent:
-<<<<<<< HEAD
     tgb.html("h1", "Welcome To the Relax Zone")
-=======
     tgb.html("p", "Relaxation. Unwinding into a state of trainquility.")
->>>>>>> ca6ef2d97514b6f276e686dc2b76a5d2ad43fd34
     tgb.html("p", "Choose a relaxing activity for today's break:")
     # i would like to add images
-
     tgb.button("Deep Breathing", id="breathingSubmit")
     tgb.button("Reading", id="readingSubmit")
     tgb.button("Massage", id="massageSubmit")
