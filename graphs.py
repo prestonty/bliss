@@ -21,20 +21,8 @@ def readCSV(path_to_csv:str):
     dataset = pd.read_csv(path_to_csv)
     return dataset
 
-def reset():
-    calmnum = 0
-    relaxnum = 0
-    energynum = 0
-
-    date_lis = []
-    relax_breaks = []
-    calm_breaks = []
-    energy_breaks = []
-
 # getters
 def get_calm():
-    print("hi")
-    print(calm_breaks)
     return calm_breaks
 def get_energy():
     return energy_breaks

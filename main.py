@@ -6,6 +6,7 @@ import csv
 import graphs
 import chat
 from datetime import datetime
+import pandas as pd
 
 # --------------------------------------------------------- setting up global styling
 stylekit = {
@@ -13,6 +14,11 @@ stylekit = {
   "color_secondary": "#FFC0CB",
 }
 # ---------------------------------------------------------
+DATE = "Date"
+RELAX = "Relaxing"
+CALM = "Calming"
+ENERGY = "Energizing"
+BREAKTYPE = "Break"
 
 button_ids = {
     "journalSubmit": "Calming",
@@ -26,6 +32,13 @@ button_ids = {
     "massageSubmit": "Relaxing"
   }
 
+data.refresh_data()
+
+dataframe = pd.DataFrame({DATE:graphs.date_lis,
+                          RELAX:graphs.relax_breaks,
+                          ENERGY:graphs.energy_breaks,
+                          CALM:graphs.calm_breaks})
+
 def add_entry(activity_category):
     current_date = datetime.now().strftime("%m/%d/%y")
 
@@ -35,15 +48,28 @@ def add_entry(activity_category):
       csv_writer = csv.writer(csvfile)
       csv_writer.writerow(data_list)
 
-
 def on_action(state, id):
     # we could remove the if statements for login logout
-    if id in button_ids:
+    if id == "loginSubmit":
+        pages = homeContent
+        pass
+    elif id == "logoutSubmit":
+        pages = loginContent
+    elif id in button_ids:
         add_entry(button_ids.get(id))
         navigate(state, "analytics")
+        data.refresh_data()
+        data_dict = {
+            DATE:graphs.get_date_lis(),
+            RELAX:graphs.get_relax(),
+            ENERGY:graphs.get_energy(),
+            CALM:graphs.get_calm()
+        }
+        state.dataframe = pd.DataFrame(data_dict)
 
 # --------------------------------------------------------- Login Page
 
+loginContent = Html("""""")
 # STORE USERNAME AND PASSWORD
 user = "user123"
 password = "password123"
@@ -63,27 +89,27 @@ def updatePassword(state):
     password = state.password
     print("Current password is ", password)
 
-loginContent = Html("""
-<h1>Join bliss Today"</h1>
-<|layout|columns=1 1|
-<p>Username: </p>
-<|{user}|input|label=""|on_change=updateUser|>
-<p>Password: </p>
-<|{password}|input|label=""|on_change=updatePassword|password=True|>              
-|>
-<|Login|button|id="loginSubmit"|on_action=nav_home|>
-""")
+# loginContent = Html("""
+# <h1>Join bliss Today"</h1>
+# <|layout|columns=1 1|
+# <p>Username: </p>
+# <|{user}|input|label=""|on_change=updateUser|>
+# <p>Password: </p>
+# <|{password}|input|label=""|on_change=updatePassword|password=True|>              
+# |>
+# <|Login|button|id="loginSubmit"|on_action=nav_home|>
+# """)
 
-# with tgb.Page() as loginContent:
-#     tgb.html("h1", "Join bliss Today")
-#     with tgb.layout("3 1"):
-#         tgb.html("p", "Username:")
-#         tgb.input("{user}", label="", on_change="updateUser")
-#         tgb.html("p", "Password:")
-#         tgb.input("{password}", label="", on_change="updatePassword", password=True)
-#     tgb.button("Login", id="loginSubmit", on_action="nav_home")
+with tgb.Page() as loginContent:
+    tgb.html("h1", "Join bliss Today")
+    with tgb.layout("3 1"):
+        tgb.html("p", "Username:")
+        tgb.input("{user}", label="", on_change="updateUser")
+        tgb.html("p", "Password:")
+        tgb.input("{password}", label="", on_change="updatePassword", password=True)
+    tgb.button("Login", id="loginSubmit", on_action="nav_home")
 
-# background-image: url("paper.gif");
+background-image: url("paper.gif");
 
 # --------------------------------------------------------- Home Page
 
@@ -144,7 +170,7 @@ with tgb.Page() as relaxContent:
 # --------------------------------------------------------- Analytics Page
 analyticsContent = """
 
-<|{data.dataframe}|chart|properties={data.property_chart}|>
+<|{dataframe}|chart|properties={data.property_chart}|rebuild|>
 
 """
 
@@ -152,7 +178,6 @@ with tgb.Page() as relaxContent:
     tgb.html("p", "Relaxation. Unwinding into a state of trainquility.")
     tgb.html("p", "Choose a relaxing activity for today's break:")
     # i would like to add images
-
     tgb.button("Deep Breathing", id="breathingSubmit")
     tgb.button("Reading", id="readingSubmit")
     tgb.button("Massage", id="massageSubmit")
