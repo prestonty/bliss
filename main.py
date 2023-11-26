@@ -193,18 +193,6 @@ energyContent = """
     <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
 </div>
 """
-
-
-# with tgb.Page() as energyContent:
-#     tgb.html("h1", "Welcome To the Energy Zone")
-#     tgb.html("p", "Feeling devastated from work? We will get you mind back on track!")
-#     tgb.html("p", "Energy. It's what fuels us and what drives us forward.")
-#     tgb.html("p", "Choose an energetic activity for today's break:")
-#     # i would like to add images
-
-#     tgb.button("Exercise Routines", id="exerciseSubmit")
-#     tgb.button("Hiking", id="hikingSubmit")
-#     tgb.button("Power Nap", id="napSubmit")
 # --------------------------------------------------------- relax Page
 relaxContent = """
 <h1>Welcome To the Relax Zone</h1>
@@ -229,16 +217,6 @@ relaxContent = """
     <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
 </div>
 """
-
-# with tgb.Page() as relaxContent:
-#     tgb.html("h1", "Welcome To the Relax Zone")
-#     tgb.html("p", "Relaxation. Unwinding into a state of trainquility.")
-#     tgb.html("p", "Choose a relaxing activity for today's break:")
-#     # i would like to add images
-#     tgb.button("Deep Breathing", id="breathingSubmit")
-#     tgb.button("Reading", id="readingSubmit")
-#     tgb.button("Massage", id="massageSubmit")
-
 # --------------------------------------------------------- Analytics Page
 analyticsContent = """
 
