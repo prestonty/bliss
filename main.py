@@ -109,7 +109,7 @@ with tgb.Page() as loginContent:
         tgb.input("{password}", label="", on_change="updatePassword", password=True)
     tgb.button("Login", id="loginSubmit", on_action="nav_home")
 
-background-image: url("paper.gif");
+# background-image: url("paper.gif");
 
 # --------------------------------------------------------- Home Page
 
@@ -122,7 +122,7 @@ def nav_login(state):
 
 # must declare before page
 with tgb.Page() as homeContent:
-    tgb.html("h1", "Welcome to Bliss!")
+    tgb.html("h1", "Welcome to bliss!")
     tgb.html("p", "Feeling devastated from work? We will get you mind back on track!")
     tgb.html("p", "How are you feeling today?")
     tgb.input("Enter text here", label="Feeling Today?")
@@ -203,7 +203,7 @@ def submitQuestion(state):
 
 
 chatContent = """
-<h1>Introducing Bliss's chatbot, Arcadia, powered by Cohere's AI!</h1>
+<h1>Introducing bliss' chatbot, Arcadia, powered by Cohere's AI!</h1>
 <br/>
 <img src="waves.png"/>
 
