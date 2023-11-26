@@ -196,7 +196,7 @@ energyContent = """
 # --------------------------------------------------------- relax Page
 relaxContent = """
 <h1>Welcome To the Relax Zone</h1>
-<p>Relaxation. Unwinding into a state of trainquility.</p>
+<p>Relaxation. Unwinding into a state of tranquility.</p>
 <p style="margin-bottom:30px;">"Choose a relaxing activity for today's break:</p>
 
 <|Deep Breathing|button|id=breathingSubmit|on_action=on_action|>
