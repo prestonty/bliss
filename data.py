@@ -52,12 +52,3 @@ property_chart = {"type": "bar",
                   "color[3]": PASTELYELLOW,
                  }
 
-'''
-page = """
-# Analytics
-<|{dataframe}|chart|properties={property_chart}|rebuild|>
-
-"""
-
-Gui(page).run(run_browser=False, stylekit=stylekit)
-'''

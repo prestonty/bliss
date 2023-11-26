@@ -6,6 +6,7 @@ import csv
 import graphs
 import chat
 from datetime import datetime
+import pandas as pd
 
 # --------------------------------------------------------- setting up global styling
 stylekit = {
@@ -13,6 +14,11 @@ stylekit = {
   "color_secondary": "#FFC0CB",
 }
 # ---------------------------------------------------------
+DATE = "Date"
+RELAX = "Relaxing"
+CALM = "Calming"
+ENERGY = "Energizing"
+BREAKTYPE = "Break"
 
 button_ids = {
     "journalSubmit": "Calming",
@@ -26,6 +32,13 @@ button_ids = {
     "massageSubmit": "Relaxing"
   }
 
+data.refresh_data()
+
+dataframe = pd.DataFrame({DATE:graphs.date_lis,
+                          RELAX:graphs.relax_breaks,
+                          ENERGY:graphs.energy_breaks,
+                          CALM:graphs.calm_breaks})
+
 def add_entry(activity_category):
     current_date = datetime.now().strftime("%m/%d/%y")
 
@@ -35,16 +48,24 @@ def add_entry(activity_category):
       csv_writer = csv.writer(csvfile)
       csv_writer.writerow(data_list)
 
-
 def on_action(state, id):
     # we could remove the if statements for login logout
     if id == "loginSubmit":
         pages = homeContent
+        pass
     elif id == "logoutSubmit":
         pages = loginContent
-    if id in button_ids:
+    elif id in button_ids:
         add_entry(button_ids.get(id))
         navigate(state, "analytics")
+        data.refresh_data()
+        data_dict = {
+            DATE:graphs.get_date_lis(),
+            RELAX:graphs.get_relax(),
+            ENERGY:graphs.get_energy(),
+            CALM:graphs.get_calm()
+        }
+        state.dataframe = pd.DataFrame(data_dict)
 
 # --------------------------------------------------------- Login Page
 loginContent = Html("""
@@ -139,7 +160,7 @@ with tgb.Page() as relaxContent:
 # --------------------------------------------------------- Analytics Page
 analyticsContent = """
 
-<|{data.dataframe}|chart|properties={data.property_chart}|>
+<|{dataframe}|chart|properties={data.property_chart}|rebuild|>
 
 """
 
@@ -147,7 +168,6 @@ with tgb.Page() as relaxContent:
     tgb.html("p", "Relaxation. Unwinding into a state of trainquility.")
     tgb.html("p", "Choose a relaxing activity for today's break:")
     # i would like to add images
-
     tgb.button("Deep Breathing", id="breathingSubmit")
     tgb.button("Reading", id="readingSubmit")
     tgb.button("Massage", id="massageSubmit")
