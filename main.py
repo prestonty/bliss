@@ -103,7 +103,12 @@ with tgb.Page() as loginContent:
 
 # --------------------------------------------------------- Home Page
 
-homeContent = Html("""""")
+homeContent = tgb.Page()
+
+homeContent = Html("""
+    <div style="background-image: url('imgs/home-page.png'); background-size: cover; width: 100vw; height: 100vh;">
+    </div>
+""")
 
 # navigates to home function
 def nav_login(state):
@@ -111,12 +116,12 @@ def nav_login(state):
     pass
 
 # must declare before page
-with tgb.Page() as homeContent:
-    tgb.html("h1", "Welcome to Bliss, {user}!")
-    tgb.html("p", "Feeling devastated from work? We will get you mind back on track!")
-    tgb.html("p", "How are you feeling today?")
-    tgb.input("Enter text here", label="Feeling Today?")
-    tgb.button("Logout", id="logoutSubmit", on_action="nav_login")
+# with tgb.Page() as homeContent:
+#     tgb.html("h1", "Welcome to Bliss, {user}!")
+#     tgb.html("p", "Feeling devastated from work? We will get you mind back on track!")
+#     tgb.html("p", "How are you feeling today?")
+#     tgb.input("Enter text here", label="Feeling Today?")
+#     tgb.button("Logout", id="logoutSubmit", on_action="nav_login")
 
 # --------------------------------------------------------- calm Page
 calmContent = Html("""
