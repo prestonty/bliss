@@ -151,19 +151,19 @@ calmContent = """
 <p>Calmness. Moments of peace. Like a cold breeze in the autumn night.</p>
 <p style="margin-bottom:30px;">Choose a calm activity for today's break:</p>
 
-<|Journaling|button|id=journalSubmit|on_action=submit_data|>
+<|Journaling|button|id=journalSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
-    <img style="margin-bottom: 20px; margin-top: 15px; width: 200px; height: auto; margin-right: 20px;" src="assets/images/journaling.png" alt="Description of the image"></img>
+    <img style="margin-bottom: 20px; margin-top: 15px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
     <p style="">Journalling can be a great way to destress and calm down! It means recording your thoughts, reflections, and experiences in some sort of diary.</p>
 </div>
-<|Meditation|button|id=meditateSubmit|on_action=submit_data|>
+<|Meditation|button|id=meditateSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
-    <img style="margin-bottom: 20px; margin-top: 15px; width: 200px; height: auto; margin-right: 20px;" src="assets/images/journaling.png" alt="Description of the image"></img>
+    <img style="margin-bottom: 20px; margin-top: 15px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
     <p style="">Journalling can be a great way to destress and calm down! It means recording your thoughts, reflections, and experiences in some sort of diary.</p>
 </div>
-<|Ambient Sound|button|id=ambientSubmit|on_action=submit_data|>
+<|Ambient Sound|button|id=ambientSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
-    <img style="margin-bottom: 20px; margin-top: 15px; width: 200px; height: auto; margin-right: 20px;" src="assets/images/journaling.png" alt="Description of the image"></img>
+    <img style="margin-bottom: 20px; margin-top: 15px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
     <p style="">Journalling can be a great way to destress and calm down! It means recording your thoughts, reflections, and experiences in some sort of diary.</p>
 </div>
 """
@@ -175,21 +175,21 @@ energyContent = """
 <p>"Energy. It's what fuels us and what drives us forward.</p>
 <p style="margin-bottom:30px;">Choose an energetic activity for today's break:</p>
 
-<|Exercise Routines|button|id=exerciseSubmit|on_action=submit_data|>
+<|Exercise Routines|button|id=exerciseSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
-    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="assets/images/journaling.png" alt="Description of the image"></img>
+    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
     <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
 </div>
 
-<|Hiking|button|id=hikingSubmit|on_action=submit_data|>
+<|Hiking|button|id=hikingSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
-    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="assets/images/journaling.png" alt="Description of the image"></img>
+    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
     <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
 </div>
 
-<|Power Nap|button|id=napSubmit|on_action=submit_data|>
+<|Power Nap|button|id=napSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
-    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="assets/images/journaling.png" alt="Description of the image"></img>
+    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
     <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
 </div>
 """
@@ -199,21 +199,21 @@ relaxContent = """
 <p>Relaxation. Unwinding into a state of trainquility.</p>
 <p style="margin-bottom:30px;">"Choose a relaxing activity for today's break:</p>
 
-<|Deep Breathing|button|id=exerciseSubmit|on_action=submit_data|>
+<|Deep Breathing|button|id=breathingSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
-    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="assets/images/journaling.png" alt="Description of the image"></img>
+    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
     <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
 </div>
 
-<|Reading|button|id=hikingSubmit|on_action=submit_data|>
+<|Reading|button|id=readingSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
-    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="assets/images/journaling.png" alt="Description of the image"></img>
+    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
     <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
 </div>
 
-<|Massage|button|id=napSubmit|on_action=submit_data|>
+<|Massage|button|id=massageSubmit|on_action=on_action|>
 <div style="display: flex; justify-center">
-    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="assets/images/journaling.png" alt="Description of the image"></img>
+    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="images/journaling.png" alt="Description of the image"></img>
     <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
 </div>
 """
