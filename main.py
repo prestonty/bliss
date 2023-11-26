@@ -146,52 +146,98 @@ def nav_login(state):
 #     tgb.button("Logout", id="logoutSubmit", on_action="nav_login")
 
 # --------------------------------------------------------- calm Page
-calmContent = Html("""
+calmContent = """
 <h1>Welcome To the Calm Zone</h1>
-No yelling allowed.
-""")
+<p>Calmness. Moments of peace. Like a cold breeze in the autumn night.</p>
+<p>Choose a calm activity for today's break:</p>
 
-with tgb.Page() as calmContent:
-    tgb.html("p", "Calmness. Moments of peace. Like a cold breeze in the autumn night.")
-    tgb.html("p", "Choose a calm activity for today's break:")
-    # i would like to add images
+<|Journaling|button|id=journalSubmit|on_action=submit_data|>
+<div style="display: flex; justify-center">
+    <img style="margin-bottom: 20px; margin-top: 15px; width: 200px; height: auto; margin-right: 20px;" src="assets/images/journaling.png" alt="Description of the image"></img>
+    <p style="">Journalling can be a great way to destress and calm down! It means recording your thoughts, reflections, and experiences in some sort of diary.</p>
+</div>
+<|Meditation|button|id=meditateSubmit|on_action=submit_data|>
+<div style="display: flex; justify-center">
+    <img style="margin-bottom: 20px; margin-top: 15px; width: 200px; height: auto; margin-right: 20px;" src="assets/images/journaling.png" alt="Description of the image"></img>
+    <p style="">Journalling can be a great way to destress and calm down! It means recording your thoughts, reflections, and experiences in some sort of diary.</p>
+</div>
+<|Ambient Sound|button|id=ambientSubmit|on_action=submit_data|>
+<div style="display: flex; justify-center">
+    <img style="margin-bottom: 20px; margin-top: 15px; width: 200px; height: auto; margin-right: 20px;" src="assets/images/journaling.png" alt="Description of the image"></img>
+    <p style="">Journalling can be a great way to destress and calm down! It means recording your thoughts, reflections, and experiences in some sort of diary.</p>
+</div>
+"""
 
-    tgb.button("Journaling", id="journalSubmit")
-    tgb.button("Meditating", id="meditateSubmit")
-    tgb.button("Ambient Noise", id="ambientSubmit")
 
 # --------------------------------------------------------- energy Page
 energyContent = """
 <h1>Welcome To the Energy Zone</h1>
-<p>Feeling devastated from work? We will get you mind back on track!</p>
+<p>"Energy. It's what fuels us and what drives us forward.</p>
 <p>Choose an energetic activity for today's break:</p>
 
-<
+<|Exercise Routines|button|id=exerciseSubmit|on_action=submit_data|>
+<div style="display: flex; justify-center">
+    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="assets/images/journaling.png" alt="Description of the image"></img>
+    <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
+</div>
+
+<|Hiking|button|id=hikingSubmit|on_action=submit_data|>
+<div style="display: flex; justify-center">
+    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="assets/images/journaling.png" alt="Description of the image"></img>
+    <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
+</div>
+
+<|Power Nap|button|id=napSubmit|on_action=submit_data|>
+<div style="display: flex; justify-center">
+    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="assets/images/journaling.png" alt="Description of the image"></img>
+    <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
+</div>
 """
 
 
+# with tgb.Page() as energyContent:
+#     tgb.html("h1", "Welcome To the Energy Zone")
+#     tgb.html("p", "Feeling devastated from work? We will get you mind back on track!")
+#     tgb.html("p", "Energy. It's what fuels us and what drives us forward.")
+#     tgb.html("p", "Choose an energetic activity for today's break:")
+#     # i would like to add images
 
-with tgb.Page() as energyContent:
-    tgb.html("h1", "Welcome To the Energy Zone")
-    tgb.html("p", "Feeling devastated from work? We will get you mind back on track!")
-    tgb.html("p", "Energy. It's what fuels us and what drives us forward.")
-    tgb.html("p", "Choose an energetic activity for today's break:")
-    # i would like to add images
-
-    tgb.button("Exercise Routines", id="exerciseSubmit")
-    tgb.button("Hiking", id="hikingSubmit")
-    tgb.button("Power Nap", id="napSubmit")
+#     tgb.button("Exercise Routines", id="exerciseSubmit")
+#     tgb.button("Hiking", id="hikingSubmit")
+#     tgb.button("Power Nap", id="napSubmit")
 # --------------------------------------------------------- relax Page
-relaxContent = Html("""""")
+relaxContent = """
+<h1>Welcome To the Relax Zone</h1>
+<p>Relaxation. Unwinding into a state of trainquility.</p>
+<p>"Choose a relaxing activity for today's break:</p>
 
-with tgb.Page() as relaxContent:
-    tgb.html("h1", "Welcome To the Relax Zone")
-    tgb.html("p", "Relaxation. Unwinding into a state of trainquility.")
-    tgb.html("p", "Choose a relaxing activity for today's break:")
-    # i would like to add images
-    tgb.button("Deep Breathing", id="breathingSubmit")
-    tgb.button("Reading", id="readingSubmit")
-    tgb.button("Massage", id="massageSubmit")
+<|Deep Breathing|button|id=exerciseSubmit|on_action=submit_data|>
+<div style="display: flex; justify-center">
+    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="assets/images/journaling.png" alt="Description of the image"></img>
+    <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
+</div>
+
+<|Reading|button|id=hikingSubmit|on_action=submit_data|>
+<div style="display: flex; justify-center">
+    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="assets/images/journaling.png" alt="Description of the image"></img>
+    <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
+</div>
+
+<|Massage|button|id=napSubmit|on_action=submit_data|>
+<div style="display: flex; justify-center">
+    <img style="margin-bottom: 20px; width: 200px; height: auto; margin-right: 20px;" src="assets/images/journaling.png" alt="Description of the image"></img>
+    <p style="">Jounjfdksjkdsfjksfdj text goes here</p>
+</div>
+"""
+
+# with tgb.Page() as relaxContent:
+#     tgb.html("h1", "Welcome To the Relax Zone")
+#     tgb.html("p", "Relaxation. Unwinding into a state of trainquility.")
+#     tgb.html("p", "Choose a relaxing activity for today's break:")
+#     # i would like to add images
+#     tgb.button("Deep Breathing", id="breathingSubmit")
+#     tgb.button("Reading", id="readingSubmit")
+#     tgb.button("Massage", id="massageSubmit")
 
 # --------------------------------------------------------- Analytics Page
 analyticsContent = """
