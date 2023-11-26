@@ -4,6 +4,7 @@ import taipy.gui.builder as tgb
 import data
 import csv
 import graphs
+import chat
 from datetime import datetime
 
 button_ids = {
@@ -84,7 +85,7 @@ Feeling devastated from work? We will get you mind back on track!
 with tgb.Page() as homeContent:
     tgb.html("p", "How are you feeling today?")
     tgb.input("Enter text here", label="Feeling Today?")
-    tgb.button("Logout", ig="logoutSubmit", on_action="nav_login")
+    tgb.button("Logout", id="logoutSubmit", on_action="nav_login")
 
 # --------------------------------------------------------- calm Page
 calmContent = Html("""
@@ -117,6 +118,7 @@ relaxContent = Html("""
 """)
 
 with tgb.Page() as relaxContent:
+    tgb.html("h1", "Welcome To the Relax Zone")
     tgb.html("p", "Choose a relaxing activity for today's break:")
     # i would like to add images
 
@@ -138,6 +140,35 @@ with tgb.Page() as relaxContent:
     tgb.button("Deep Breathing", id="breathingSubmit")
     tgb.button("Reading", id="readingSubmit")
     tgb.button("Massage", id="massageSubmit")
+
+# --------------------------------------------------------- Chatbot Page
+# chatContent = """"""
+chatContent = tgb.Page()
+userQuestion = "say hello"
+properQuestion = False
+prompt = "say hello"
+answer = ""
+wordCount = 40
+def updateUserQuestion(state):
+    global userQuestion
+    userQuestion = state.userQuestion
+    print("Current userQuestion is: ", userQuestion)
+    pass
+
+def submitQuestion(state):
+    prompt = state.userQuestion
+    state.answer = chat.genActivity(prompt + " answered in less than " + str(wordCount) +" words")
+    pass
+
+chatContent = """
+<h1>Introducing Bliss's chatbot, Arcadia, powered by Cohere's AI!</h1>
+<br/>
+<p>Hi, I am Arcadia, here to help. I can recommend any relaxing, energetic, or calming activities for you to do!</p>
+<|{userQuestion}|input|label="ask here"|on_change=updateUserQuestion|>
+<|Ask|button|id="questionSubmit"|on_action=submitQuestion|>
+<|{answer}|input|multiline|answer|active={prompt!="" and answer!=""}|class_name=fullwidth|>
+"""
+
 # --------------------------------------------------------- Routing between pages
 pages = {
     "/": "<|menu|lov={page_names}|on_action=menu_action|>",
@@ -147,6 +178,7 @@ pages = {
     "energy": energyContent,
     "relax": relaxContent,
     "analytics": analyticsContent,
+    "chat": chatContent,
 }
 page_names = [page for page in pages.keys() if page != "/"]
 

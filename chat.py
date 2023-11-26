@@ -24,6 +24,6 @@ def genActivity(topic):
     temperature=0.3,
     )
     # response is a string that is the answer to the topic in less than 60 words
-    return response
+    return response.generations[0].text
 
 # print(genActivity(topic))
