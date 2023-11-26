@@ -149,7 +149,7 @@ def nav_login(state):
 calmContent = """
 <h1>Welcome To the Calm Zone</h1>
 <p>Calmness. Moments of peace. Like a cold breeze in the autumn night.</p>
-<p>Choose a calm activity for today's break:</p>
+<p style="margin-bottom:30px;">Choose a calm activity for today's break:</p>
 
 <|Journaling|button|id=journalSubmit|on_action=submit_data|>
 <div style="display: flex; justify-center">
@@ -173,7 +173,7 @@ calmContent = """
 energyContent = """
 <h1>Welcome To the Energy Zone</h1>
 <p>"Energy. It's what fuels us and what drives us forward.</p>
-<p>Choose an energetic activity for today's break:</p>
+<p style="margin-bottom:30px;">Choose an energetic activity for today's break:</p>
 
 <|Exercise Routines|button|id=exerciseSubmit|on_action=submit_data|>
 <div style="display: flex; justify-center">
@@ -209,7 +209,7 @@ energyContent = """
 relaxContent = """
 <h1>Welcome To the Relax Zone</h1>
 <p>Relaxation. Unwinding into a state of trainquility.</p>
-<p>"Choose a relaxing activity for today's break:</p>
+<p style="margin-bottom:30px;">"Choose a relaxing activity for today's break:</p>
 
 <|Deep Breathing|button|id=exerciseSubmit|on_action=submit_data|>
 <div style="display: flex; justify-center">
@@ -245,15 +245,6 @@ analyticsContent = """
 <|{dataframe}|chart|properties={data.property_chart}|rebuild|>
 
 """
-
-with tgb.Page() as relaxContent:
-    tgb.html("p", "Relaxation. Unwinding into a state of trainquility.")
-    tgb.html("p", "Choose a relaxing activity for today's break:")
-    # i would like to add images
-    tgb.button("Deep Breathing", id="breathingSubmit")
-    tgb.button("Reading", id="readingSubmit")
-    tgb.button("Massage", id="massageSubmit")
-
 # --------------------------------------------------------- Chatbot Page
 # chatContent = """"""
 chatContent = tgb.Page()
