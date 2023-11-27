@@ -1,4 +1,5 @@
-﻿# bliss (Winner of Best use of Taipy sponsored by MLH for HackWestern, Western University's Annual Hackathon)
+﻿# bliss
+ (Winner of Best use of Taipy sponsored by MLH for HackWestern, Western University's Annual Hackathon)
 
 # INSTALLATION:
 1. install python version 3.10.6
